@@ -1,0 +1,31 @@
+{
+    "manifest_version": 2,
+    "name": "VK renaming tool",
+    "description": "Данное расширение переименовывает разделы на сайте vk.com",
+    "version": "1.0.0",
+    "options_page": "options.html",
+    "author": "1323ED5",
+    "permissions": [
+        "https://vk.com/*",
+        "storage"
+    ],
+    "options_ui": {
+        "chrome_style": false,
+        "page": "options.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://vk.com/*"
+            ],
+            "include_globs": [
+                "https://vk.com/*"
+            ],
+            "js": [
+                "js/rename.js"
+            ],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ]
+}
