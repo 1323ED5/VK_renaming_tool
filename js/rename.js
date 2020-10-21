@@ -1,13 +1,5 @@
 "use strict";
 
-function main(){
-    chrome.storage.local.get(
-        ['keywords'],
-        (keys) => chrome.storage.local.get(keys.keywords, replace)
-    );
-}
-
-
 function replace(items) {
     for (let key of Object.keys(items)) {
         let element = document.getElementById(key);
@@ -16,6 +8,13 @@ function replace(items) {
             element.innerHTML = items[key];
         }
     }
+}
+
+function main() {
+    chrome.storage.local.get(
+        ['keywords'],
+        (keys) => chrome.storage.local.get(keys.keywords, replace)
+    );
 }
 
 main();
