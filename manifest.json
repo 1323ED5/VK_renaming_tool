@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "VK renaming tool",
     "description": "Данное расширение переименовывает разделы на сайте vk.com",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "options_page": "options.html",
     "author": "1323ED5",
     "permissions": [

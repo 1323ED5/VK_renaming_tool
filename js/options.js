@@ -1,46 +1,33 @@
 "use strict";
 
-function load_values() {
-  // loads values from storage
-
-  chrome.storage.local.get(
-    ['keywords'],
-    (keys) => chrome.storage.local.get(keys.keywords, add_values)
-  );
-}
-
-function add_values(values) {
-  // adds values to inputs
-
-  for (let key of Object.keys(values)) {
-    document.getElementById(key).value = values[key];
-  }
-}
-
 function save() {
-  // onClick event for button "save"
+    // onClick event for button "save"
 
-  let fields = document.getElementsByTagName("input");
-  let settings = { 'keywords': [] }
+    let fields = document.querySelectorAll('input[type="text"]');
+    let params = [];
 
-  for (let field of fields) {
-    if (field.value !== "") {
-      settings['keywords'].push(field.id);
-      settings[field.id] = field.value;
+    for (let field of fields) {
+        if (field.value !== "") {
+            params.push({ "id": field.id, "value": field.value });
+        }
     }
-  }
 
-  chrome.storage.local.set(settings);
+    chrome.storage.local.set({ "settings": params });
 }
 
 function main() {
-  load_values();
+    // loads values from storage to fields
+    chrome.storage.local.get(result => {
+        for (let field of result.settings) {
+            document.getElementById(field.id).value = field.value;
+        }
+    });
 
-  // adds button "save"
-  let button = document.createElement('button');
-  button.innerHTML = "Сохранить";
-  button.addEventListener('click', save);
-  document.getElementsByTagName('body')[0].appendChild(button);
+    // Save on change
+    let inputs = document.querySelectorAll('input[type="text"]');
+    for (let input of inputs) {
+        input.addEventListener('change', save);
+    }
 }
 
 main();

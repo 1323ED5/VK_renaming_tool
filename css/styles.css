@@ -2,9 +2,11 @@ input {
     width: 85%;
     font-weight: bold;
     padding: 5px;
-    border-radius: 10px;
-    border: 1px solid white;
+    border-radius: 5px;
+    border: 0 solid #DADCE0;
     text-indent: 3px;
+    outline: none;
+    /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25); */
 }
 
 input::-webkit-input-placeholder { 
@@ -15,14 +17,10 @@ input::-webkit-input-placeholder {
 .wrapper {
     display: flex;
     justify-content: center;
-    /* padding: 5px; */
-}
-
-.column {
-    /* margin-left: 20px; */
 }
 
 body {
     width: 400px;
-    background-color: #DAE2EA;
+    background-color: #9AA0A6;
+    padding-bottom: 5px;
 }
